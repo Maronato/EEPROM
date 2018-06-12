@@ -30,7 +30,7 @@ byte EEPROM::read_byte(unsigned int addr) {
     byte rdata = 0xFF;
     Wire.beginTransmission(_id);
     Wire.write((int)(addr >> 8)); // MSB
-    Wire.write((int)(addr >> 8)); // LSB
+    Wire.write((int)(addr & 0xFF)); // LSB
     Wire.endTransmission();
     delay(10);
     Wire.requestFrom(_id, 1);
